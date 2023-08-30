@@ -43,11 +43,28 @@ export default App
 
 import {Routes, Route} from "react-router-dom";
 import HomePage from './components/HomePage.jsx';
+import ProductDetails from "./components/ProductDetails.jsx";
+import ProductList from "./components/ProductList.jsx";
+import Header from "./components/Header.jsx"
+import Login from "./components/Login.jsx";
+import Register from "./components/Register.jsx";
+import "./styles/layouts.css"
+
 
 function App() {
   return (
+    
     <div>
-      <HomePage/>
+      <div><Header/></div>
+      
+      <Routes> 
+        <Route path="/" Component={HomePage}/>
+        <Route path="/home" Component={HomePage}/>
+        <Route path="/productlist" Component={ProductList}/>
+        <Route path="/productdetails" Component={ProductDetails}/>
+        <Route path="/register" Component={Register}/>
+        <Route path="/login" Component={Login}/>
+      </Routes>
     </div>
   );
 }
