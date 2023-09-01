@@ -2,26 +2,27 @@
     display: flex;
     text-align: center;
     justify-content: space-evenly;
+    padding: 5%;
   }
-  /* .ProductList{
-    align-items: center;
-  } */
+  #ProductList{
+    justify-content: space-evenly;
+  }
 div{
     text-align: center;
-    justify-content: space-evenly;
+    justify-content: space-evenly !important;
 }  
 h1 {
     font-size: 3.2em;
     line-height: 1.1;
     text-align: center;
 }
-body {
+/* body {
     margin: 10;
     display: flex;
-    min-width: 100px;
-    min-height: 100vh;
+    min-width: 100%;
+    min-height: 100%;
     padding: 2em;
-  }
+  } */
 button:hover {
   border-color: #646cff;
 }
