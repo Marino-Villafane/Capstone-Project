@@ -56,7 +56,11 @@ function ProductList() {
       <h2>Product List</h2>
       <ul>
         {products.map(product => (
-         <div className= "proddiv" key={product.id}>{product.title} {product.price} <img src={product.thumbnail} alt={product.title}/></div>
+         <div className= "proddiv" key={product.id}>
+          <p>{product.title}</p>
+          <p><img src={product.thumbnail} alt={product.title}/></p>
+          <p>{product.price}</p> 
+          </div>
         ))}
       </ul>
     </div>
