@@ -4,7 +4,9 @@
     justify-content: space-evenly;
     padding: 5%;
   }
-  #ProductList{
+  #productlist{
+    display: flex;
+    flex-wrap: wrap;
     justify-content: space-evenly;
   }
   #proddiv{

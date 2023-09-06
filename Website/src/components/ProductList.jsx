@@ -52,14 +52,14 @@ function ProductList() {
   }
 
   return (
-    <div>
+    <div >
       <h2>Product List</h2>
-      <ul>
+      <ul id='productlist'>
         {products.map(product => (
-         <div className= "proddiv" key={product.id}>
+         <div key={product.id}>
           <p>{product.title}</p>
           <p><img src={product.thumbnail} alt={product.title}/></p>
-          <p>{product.price}</p> 
+          <p>{"$"}{product.price}</p> 
           </div>
         ))}
       </ul>
