@@ -41,7 +41,7 @@ export default App
 // src/App.jsx
 
 
-import {Routes, Route} from "react-router-dom";
+import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
 import HomePage from './components/HomePage.jsx';
 import ProductDetails from "./components/ProductDetails.jsx";
 import ProductList from "./components/ProductList.jsx";
@@ -53,19 +53,20 @@ import "./styles/layouts.css"
 
 function App() {
   return (
-    
+    <Router>
     <div>
       <div><Header/></div>
       
       <Routes> 
-        <Route path="/" Component={HomePage}/>
-        <Route path="/home" Component={HomePage}/>
-        <Route path="/productlist" Component={ProductList}/>
-        <Route path="/productdetails" Component={ProductDetails}/>
-        <Route path="/register" Component={Register}/>
-        <Route path="/login" Component={Login}/>
+        <Route path="/" element={<HomePage/>}/>
+        <Route path="/home" element={<HomePage/>}/>
+        <Route path="/productlist" element={<ProductList/>}/>
+        <Route path="/productlist/:id" element={<ProductDetails/>}/>
+        <Route path="/register" element={<Register/>}/>
+        <Route path="/login" element={<Login/>}/>
       </Routes>
     </div>
+    </Router>
   );
 }
 

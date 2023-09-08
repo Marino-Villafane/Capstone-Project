@@ -12,6 +12,7 @@
 //     )}
 
 import React, { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
        
 function ProductList() {
   const [products, setProducts] = useState([]);
@@ -57,9 +58,11 @@ function ProductList() {
       <ul id='productlist'>
         {products.map(product => (
          <div key={product.id}>
+          <p>{product.id}</p>
           <p>{product.title}</p>
           <p><img src={product.thumbnail} alt={product.title}/></p>
-          <p>{"$"}{product.price}</p> 
+          <p>{"$"}{product.price}</p>
+          <p><Link to={`/productlist/${product.id}`}>See More...</Link></p> 
           </div>
         ))}
       </ul>

@@ -7,7 +7,7 @@ export default function Navbar({token}){
     <nav id="navbar">
             <Link to = "/home"> Home</Link>
             <Link to = "/productlist"> ProductList</Link>
-            <Link to = "/productdetails"> ProductDetails</Link>
+            {/* <Link to = "/productdetails"> ProductDetails</Link> */}
             <Link to = "/login"> Login</Link>
             <Link to = "/register"> Register</Link>
         <button>Logout</button>
