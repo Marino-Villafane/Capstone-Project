@@ -11,9 +11,9 @@ function ProductList() {
 
   const handleSearch = () => {
     // Filter products based on search criteria and update the filtered product list
-    const filteredProducts = products.filter((product) => {
+    const selectedProduct = products.filter((product) => {
       if (filterOption === 'productName') {
-        return product.name.toLowerCase().includes(searchQuery.toLowerCase());
+        return product.title.toLowerCase().includes(searchQuery.toLowerCase());
       } else if (filterOption === 'category') {
         return product.category.toLowerCase().includes(searchQuery.toLowerCase());
       }
@@ -26,7 +26,7 @@ function ProductList() {
   // Function to filter products based on search criteria
 const filteredProducts = products.filter((product) => {
   // Check if product.name is defined
-  const productName = product.name ? product.name.toLowerCase() : ''; 
+  const productName = product.title ? product.title.toLowerCase() : ''; 
   // Check if product.category is defined
   const productCategory = product.category ? product.category.toLowerCase() : ''; 
 
@@ -38,14 +38,19 @@ const filteredProducts = products.filter((product) => {
   return true; // No filter applied
 });
 
-// Render the filtered list of products
-const productItems = filteredProducts.map((product) => (
-  <div key={product.id}>
-    <h2>{product.name}</h2>
-    <p>Price: ${product.price}</p>
-    <button onClick={() => handleProductSelect(product)}>View Details</button>
-  </div>
-));
+// const handleProductSelect = (product) => {
+//   setSelectedProduct(product);
+// };
+  // Render the filtered list of products only if a search query is present
+  const productItems = searchQuery ? (
+    filteredProducts.map((product) => (
+      <div key={product.id}>
+        <h2>{product.title}</h2>
+        <p>Price: ${product.price}</p>
+        <button onClick={() => handleProductSelect(product)}>View Details</button>
+      </div>
+    ))
+  ) : null;
 
   useEffect(() => {
     fetch('https://dummyjson.com/products')
@@ -99,6 +104,11 @@ const productItems = filteredProducts.map((product) => (
         </select>
         <button onClick={handleSearch}>Search</button>
       </div>
+      
+      {/* Product List */}
+      {productItems}
+      {selectedProduct && <ProductDetail product={selectedProduct} />}
+
       <ul id='productlist'>
         {products.map(product => (
          <div key={product.id}>
