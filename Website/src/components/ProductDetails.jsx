@@ -2,12 +2,16 @@
 import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 
-function ProductDetails() {
-  const { id } = useParams();
+function ProductDetails({product,cart,setCart}) {
+  let { id } = useParams();
   const [productDetails, setProductDetails] = useState({});
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
+    if (id == undefined){
+      id=product.id
+    }
+
     fetch(`https://dummyjson.com/products/${id}`)
       .then(response => {
         if (!response.ok) {
@@ -32,10 +36,33 @@ function ProductDetails() {
   if (loading) {
     return <p>Loading...</p>;
   }
+  const handleProductSelect = () => {
+    addToCart(productDetails);
+    // setSelectedProduct(product);
+  };
 
+  const addToCart = () => {
+    const existingCartItem = cart.find((item) => item.id === productDetails.id);
+  
+    if (existingCartItem) {
+      // If the productDetails is already in the cart, update the quantity
+      const updatedCart = cart.map((item) =>
+        item.id === productDetails.id
+          ? { ...item, quantity: item.quantity + 1 }
+          : item
+      );
+      setCart(updatedCart);
+    } else {
+      // If the productDetails is not in the cart, add it with a quantity of 1
+      setCart([...cart, { ...productDetails, quantity: 1 }]);
+    }
+    // props.addToCart([...cart, { ...productDetails, quantity: 1 }]);
+  };
+console.log(productDetails)
   return (
     <div>
       <h2>Product Details</h2>
+      <button onClick={handleProductSelect}>Add to cart</button>
       <p>ID: {productDetails.id}</p>
       <p>Title: {productDetails.title}</p>
       <p>Description: {productDetails.description}</p>
@@ -48,7 +75,7 @@ function ProductDetails() {
       <p>Pictures:</p>
       <p><img src={productDetails.images[0]} alt={productDetails.title}/></p>
       <p><img src={productDetails.images[1]} alt={productDetails.title}/></p>
-      <p><img src={productDetails.images[2]} alt={productDetails.title}/></p>
+      <p><img src={productDetails.images[2]} alt={productDetails.title}/></p> 
     </div>
   );
 }
