@@ -1,45 +1,3 @@
-/*
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
-
-function App() {
-  const [count, setCount] = useState(0)
-
-  return (
-    <>
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
-}
-
-export default App
-*/
-
-// src/App.js
-// src/App.jsx
-// src/App.jsx
-
 import React, { useState } from 'react';
 import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
 import HomePage from './components/HomePage.jsx';
@@ -51,6 +9,9 @@ import Register from "./components/Register.jsx";
 import "./styles/layouts.css"
 import Navbar from "./components/Header.jsx";
 import ShoppingCart from './components/ShoppingCart.jsx';
+import AuthContainer from './components/AuthForm.jsx';
+import ContactUsFooter from './components/ContactUs.jsx';
+import SocialMediaFooter from './components/Footer.jsx';
 
 
 function App() {
@@ -110,7 +71,13 @@ const removeFromCart = (productId) => {
           render={(props) => <ProductList {...addToCart} isAuthed={true} />}
         /> */}
           <Route path="/cart" element={<ShoppingCart cart={cart} />} />
+          <Route path="/auth" element={<AuthContainer/>}/>
       </Routes>
+      <footer>
+        <ContactUsFooter/>
+      <SocialMediaFooter/>
+      
+      </footer>
     </div>
     </Router>
   );

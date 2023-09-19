@@ -19,8 +19,9 @@ export default function Navbar({cartCount}){
             <Link to = "/"> Home</Link>
             <Link to = "/productlist"> ProductList</Link>
             {/* <Link to = "/productdetails"> ProductDetails</Link> */}
-            <Link to = "/login"> Login</Link>
-            <Link to = "/register"> Register</Link>
+            {/* <Link to = "/login"> Login</Link>
+            <Link to = "/register"> Register</Link> */}
+            <Link to = "/auth"> Join{}</Link>
             <Link to="/cart">
             <FontAwesomeIcon icon={faShoppingCart} beatFade/> ({cartCount})
           </Link>

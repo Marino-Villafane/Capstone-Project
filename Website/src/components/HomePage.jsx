@@ -18,6 +18,8 @@ import React, { useState, useEffect } from 'react';
 import Slider from 'react-slick';
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
+import { FaFacebook, FaTwitter, FaInstagram } from 'react-icons/fa';
+
 
 function HomePage() {
   const [products, setProducts] = useState([]);
@@ -113,14 +115,19 @@ function HomePage() {
       </section>
 
       <footer>
-        <div className="social-media-icons">
-          {/* Add your social media icons and links here */}
-          <a href="#"><i className="fab fa-facebook"></i></a>
-          <a href="#"><i className="fab fa-twitter"></i></a>
-          <a href="#"><i className="fab fa-instagram"></i></a>
-        </div>
-        <p>&copy; {new Date().getFullYear()} Your Ecommerce Store. All rights reserved.</p>
-      </footer>
+      <div className="social-media-icons">
+        <a href="#" target="_blank" rel="noopener noreferrer">
+          <FaFacebook />
+        </a>
+        <a href="#" target="_blank" rel="noopener noreferrer">
+          <FaTwitter />
+        </a>
+        <a href="#" target="_blank" rel="noopener noreferrer">
+          <FaInstagram />
+        </a>
+      </div>
+      <p>&copy; {new Date().getFullYear()} Your Ecommerce Store. All rights reserved.</p>
+    </footer>
     </div>
   );
 }
