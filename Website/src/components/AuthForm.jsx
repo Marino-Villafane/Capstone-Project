@@ -1,8 +1,5 @@
-import React, { useState, useEffect } from 'react';
-import axios from 'axios';
-
-// import RegistrationForm from './Register';
-// import LoginForm from './Login';
+import React, { useState, useEffect } from "react";
+import axios from "axios";
 
 // Helper function to set the token in both state and sessionStorage
 const logIn = (token) => {
@@ -10,16 +7,16 @@ const logIn = (token) => {
   setToken(token);
 
   // Optionally, store the token in sessionStorage
-  sessionStorage.setItem('token', token);
+  sessionStorage.setItem("token", token);
 };
 
 // Helper function to clear the token from both state and sessionStorage
 const logOut = () => {
   // Clear the token from state
-  setToken('');
+  setToken("");
 
   // Optionally, remove the token from sessionStorage
-  sessionStorage.removeItem('token');
+  sessionStorage.removeItem("token");
 };
 
 // Helper function to check if a user is logged in
@@ -30,11 +27,11 @@ const isLoggedIn = (token) => {
 // Helper function to create headers for API requests, including the bearer token if logged in
 const makeHeaders = (token) => {
   const headers = {
-    'Content-Type': 'application/json',
+    "Content-Type": "application/json",
   };
 
   if (isLoggedIn(token)) {
-    headers['Authorization'] = `Bearer ${token}`;
+    headers["Authorization"] = `Bearer ${token}`;
   }
 
   return headers;
@@ -42,14 +39,14 @@ const makeHeaders = (token) => {
 
 function RegistrationForm({ onRegister, authenticator, setAuthenticator }) {
   const [formData, setFormData] = useState({
-    username: '',
-    password: '',
-    confirmPassword: '',
+    username: "",
+    password: "",
+    confirmPassword: "",
   });
 
   const [errors, setErrors] = useState({});
   const [isSubmitted, setIsSubmitted] = useState(false);
-  const [token, setToken] = useState('');
+  const [token, setToken] = useState("");
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -67,12 +64,12 @@ function RegistrationForm({ onRegister, authenticator, setAuthenticator }) {
 
     // Perform form validation
     if (formData.password.length < 8) {
-      setErrors({ password: 'Password must be at least 8 characters long' });
+      setErrors({ password: "Password must be at least 8 characters long" });
       return;
     }
 
     if (formData.password !== formData.confirmPassword) {
-      setErrors({ confirmPassword: 'Passwords do not match' });
+      setErrors({ confirmPassword: "Passwords do not match" });
       return;
     }
 
@@ -89,24 +86,37 @@ function RegistrationForm({ onRegister, authenticator, setAuthenticator }) {
     //   });
 
     // For example without sending to backend, we'll just log the form data
-    console.log('Form data submitted:', formData);
+    console.log("Form data submitted:", formData);
     setIsSubmitted(true);
   };
-  
+
   return (
     <div>
-      <h2 style = {{cursor:'grab'}} onClick= {()=> setAuthenticator('register')}>Register</h2>
+      <h2
+        style={{ cursor: "grab" }}
+        onClick={() => setAuthenticator("register")}
+      >
+        Register
+      </h2>
       {isSubmitted ? (
         <p>Registration successful! You can now log in.</p>
       ) : (
-        <form id="register" style={authenticator === 'register'?{display:'block'}:{display:'none'}} onSubmit={handleSubmit}>
+        <form
+          id="register"
+          style={
+            authenticator === "register"
+              ? { display: "block" }
+              : { display: "none" }
+          }
+          onSubmit={handleSubmit}
+        >
           <div>
             <label htmlFor="username">Username:</label>
             <input
               type="text"
               id="username"
               name="username"
-              placeholder='username*'
+              placeholder="username*"
               value={formData.username}
               onChange={handleChange}
               required
@@ -119,7 +129,7 @@ function RegistrationForm({ onRegister, authenticator, setAuthenticator }) {
               type="password"
               id="password"
               name="password"
-              placeholder='password*'
+              placeholder="password*"
               value={formData.password}
               onChange={handleChange}
               required
@@ -133,12 +143,14 @@ function RegistrationForm({ onRegister, authenticator, setAuthenticator }) {
               type="password"
               id="confirmPassword"
               name="confirmPassword"
-              placeholder='password*'
+              placeholder="password*"
               value={formData.confirmPassword}
               onChange={handleChange}
               required
             />
-            {errors.confirmPassword && <p className="error">{errors.confirmPassword}</p>}
+            {errors.confirmPassword && (
+              <p className="error">{errors.confirmPassword}</p>
+            )}
           </div>
           <button type="submit">Register</button>
         </form>
@@ -147,20 +159,19 @@ function RegistrationForm({ onRegister, authenticator, setAuthenticator }) {
   );
 }
 
-
 function LoginForm({ onLogin, authenticator, setAuthenticator }) {
   const [formData, setFormData] = useState({
-    username: '',
-    password: '',
+    username: "",
+    password: "",
   });
 
   const [errors, setErrors] = useState({});
   const [isSubmitted, setIsSubmitted] = useState(false);
-  const [token, setToken] = useState('');
+  const [token, setToken] = useState("");
 
   useEffect(() => {
     // Check if there is a token in sessionStorage when the app loads
-    const storedToken = sessionStorage.getItem('token');
+    const storedToken = sessionStorage.getItem("token");
     if (storedToken) {
       logIn(storedToken);
     }
@@ -180,8 +191,7 @@ function LoginForm({ onLogin, authenticator, setAuthenticator }) {
     // Reset errors
     setErrors({});
 
-
-   //TO WAIT FOR BACKEND API 
+    //TO WAIT FOR BACKEND API
     // try {
     //   // Send login data to the backend
     //   const response = await axios.post('your-backend-api-url/login', formData, {
@@ -207,53 +217,67 @@ function LoginForm({ onLogin, authenticator, setAuthenticator }) {
     setIsSubmitted(false);
   };
 
-
   return (
     <div>
-     <h3>{isLoggedIn() ? 'You are Logged In' : 'You are Logged Out'}</h3>
+      <h3>{isLoggedIn() ? "You are Logged In" : "You are Logged Out"}</h3>
 
-{isLoggedIn() ? (
-  <div>
-    <p>Welcome, you are logged in!</p>
-    <button onClick={handleLogout}>Log Out</button>
-  </div>
-) : (
-  <div>
-    <h2 style = {{cursor:'grab'}} onClick= {()=> setAuthenticator('login')}>Login</h2>
-    {isSubmitted ? (
-      <p>Login successful!</p>
-    ) : (
-      <form id="login" style={authenticator === 'login'?{display:'block'}:{display:'none'}} onSubmit={handleLogin}>
-      <label htmlFor="username">Username</label>
-      <input
-          type="text"
-          id="username"
-          value={formData.username}
-          onChange={(e) => setUsername(e.target.value)}
-      />
-      <label htmlFor="password">Password</label>
-      <input
-          type="password"
-          id="password"
-          value={formData.password}
-          onChange={(e) => setPassword(e.target.value)}
-      />
-        <button type="submit">Login</button>
-      </form>
-    )}
-  </div>
-)}
+      {isLoggedIn() ? (
+        <div>
+          <p>Welcome, you are logged in!</p>
+          <button onClick={handleLogout}>Log Out</button>
+        </div>
+      ) : (
+        <div>
+          <h2
+            style={{ cursor: "grab" }}
+            onClick={() => setAuthenticator("login")}
+          >
+            Login
+          </h2>
+          {isSubmitted ? (
+            <p>Login successful!</p>
+          ) : (
+            <form
+              id="login"
+              style={
+                authenticator === "login"
+                  ? { display: "block" }
+                  : { display: "none" }
+              }
+              onSubmit={handleLogin}
+            >
+              <label htmlFor="username">Username</label>
+              <input
+                type="text"
+                id="username"
+                value={formData.username}
+                onChange={(e) => setUsername(e.target.value)}
+              />
+              <label htmlFor="password">Password</label>
+              <input
+                type="password"
+                id="password"
+                value={formData.password}
+                onChange={(e) => setPassword(e.target.value)}
+              />
+              <button type="submit">Login</button>
+            </form>
+          )}
+        </div>
+      )}
     </div>
   );
 }
-{/* <LoginForm/> */}
+{
+  /* <LoginForm/> */
+}
 
 function AuthContainer() {
-  const [token, setToken] = useState('');
-  const [authenticator, setAuthenticator]= useState(false)
+  const [token, setToken] = useState("");
+  const [authenticator, setAuthenticator] = useState(false);
   useEffect(() => {
     // Check if there is a token in sessionStorage when the app loads
-    const storedToken = sessionStorage.getItem('token');
+    const storedToken = sessionStorage.getItem("token");
     if (storedToken) {
       logIn(storedToken);
     }
@@ -269,9 +293,17 @@ function AuthContainer() {
       ) : (
         <div>
           {/* <h2>Register</h2> */}
-          <RegistrationForm onRegister={logIn} authenticator={authenticator} setAuthenticator={setAuthenticator} />
+          <RegistrationForm
+            onRegister={logIn}
+            authenticator={authenticator}
+            setAuthenticator={setAuthenticator}
+          />
           {/* <h2>Login</h2> */}
-          <LoginForm onLogin={logIn} authenticator={authenticator} setAuthenticator={setAuthenticator} />
+          <LoginForm
+            onLogin={logIn}
+            authenticator={authenticator}
+            setAuthenticator={setAuthenticator}
+          />
         </div>
       )}
     </div>
@@ -279,4 +311,3 @@ function AuthContainer() {
 }
 
 export default AuthContainer;
-

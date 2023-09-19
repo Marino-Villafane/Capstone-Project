@@ -1,33 +1,35 @@
 // ProductDetails.js
-import React, { useState, useEffect } from 'react';
-import { useParams } from 'react-router-dom';
+import React, { useState, useEffect } from "react";
+import { useParams } from "react-router-dom";
+import Slider from "react-slick";
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
 
-function ProductDetails({product,cart,setCart}) {
+function ProductDetails({ product, cart, setCart }) {
   let { id } = useParams();
   const [productDetails, setProductDetails] = useState({});
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    if (id == undefined){
-      id=product.id
+    if (id == undefined) {
+      id = product.id;
     }
 
     fetch(`https://dummyjson.com/products/${id}`)
-      .then(response => {
+      .then((response) => {
         if (!response.ok) {
-          throw new Error('Network response was not ok');
+          throw new Error("Network response was not ok");
         }
         return response.json();
       })
-      .then(data => {
+      .then((data) => {
         console.log(data); // Log the detailed product data
 
         // Assuming the data structure matches the expected format
-        setProductDetails(data); 
-
+        setProductDetails(data);
       })
-      .catch(error => {
-        console.error('Error fetching product details:', error);
+      .catch((error) => {
+        console.error("Error fetching product details:", error);
         setLoading(false); // Set loading to false on error
       })
       .finally(() => setLoading(false));
@@ -43,7 +45,7 @@ function ProductDetails({product,cart,setCart}) {
 
   const addToCart = () => {
     const existingCartItem = cart.find((item) => item.id === productDetails.id);
-  
+
     if (existingCartItem) {
       // If the productDetails is already in the cart, update the quantity
       const updatedCart = cart.map((item) =>
@@ -58,7 +60,7 @@ function ProductDetails({product,cart,setCart}) {
     }
     // props.addToCart([...cart, { ...productDetails, quantity: 1 }]);
   };
-console.log(productDetails)
+  console.log(productDetails);
   return (
     <div>
       <h2>Product Details</h2>
@@ -73,12 +75,26 @@ console.log(productDetails)
       <p>Brand: {productDetails.brand}</p>
       <p>Category: {productDetails.category}</p>
       <p>Pictures:</p>
-      <p><img src={productDetails.images[0]} alt={productDetails.title}/></p>
-      <p><img src={productDetails.images[1]} alt={productDetails.title}/></p>
-      <p><img src={productDetails.images[2]} alt={productDetails.title}/></p> 
+      <Slider
+          dots={true}
+          infinite={true}
+          speed={500}
+          slidesToShow={3} // Adjust the number of products to show per slide
+          slidesToScroll={1}
+          autoplay={true}
+        >
+      <p>
+        <img src={productDetails.images[0]} alt={productDetails.title} />
+      </p>
+      <p>
+        <img src={productDetails.images[1]} alt={productDetails.title} />
+      </p>
+      <p>
+        <img src={productDetails.images[2]} alt={productDetails.title} />
+      </p>
+      </Slider>
     </div>
   );
 }
 
 export default ProductDetails;
-

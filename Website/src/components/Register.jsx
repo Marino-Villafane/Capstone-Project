@@ -1,17 +1,17 @@
-import React, { useState } from 'react';
-import axios from 'axios';
-import Login from './Login';
+import React, { useState } from "react";
+import axios from "axios";
+import Login from "./Login";
 
 function RegistrationForm() {
   const [formData, setFormData] = useState({
-    username: '',
-    password: '',
-    confirmPassword: '',
+    username: "",
+    password: "",
+    confirmPassword: "",
   });
 
   const [errors, setErrors] = useState({});
   const [isSubmitted, setIsSubmitted] = useState(false);
-  const [token, setToken] = useState('');
+  const [token, setToken] = useState("");
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -29,12 +29,12 @@ function RegistrationForm() {
 
     // Perform form validation
     if (formData.password.length < 8) {
-      setErrors({ password: 'Password must be at least 8 characters long' });
+      setErrors({ password: "Password must be at least 8 characters long" });
       return;
     }
 
     if (formData.password !== formData.confirmPassword) {
-      setErrors({ confirmPassword: 'Passwords do not match' });
+      setErrors({ confirmPassword: "Passwords do not match" });
       return;
     }
 
@@ -51,40 +51,39 @@ function RegistrationForm() {
     //   });
 
     // For example without sending to backend, we'll just log the form data
-    console.log('Form data submitted:', formData);
+    console.log("Form data submitted:", formData);
     setIsSubmitted(true);
   };
 
-// TO BE USED WITH THE RIGHT BACKEND API
-// try {
-//     // Send registration data to the backend
-//     const response = await axios.post('https://dummyjson.com/users', formData);
+  // TO BE USED WITH THE RIGHT BACKEND API
+  // try {
+  //     // Send registration data to the backend
+  //     const response = await axios.post('https://dummyjson.com/users', formData);
 
-//     // Check for a successful registration and token in the response
-//     if (response.data.success && response.data.token) {
-//       // Store the token in state and optionally in sessionStorage
-//       setToken(response.data.token);
-//       sessionStorage.setItem('token', response.data.token);
+  //     // Check for a successful registration and token in the response
+  //     if (response.data.success && response.data.token) {
+  //       // Store the token in state and optionally in sessionStorage
+  //       setToken(response.data.token);
+  //       sessionStorage.setItem('token', response.data.token);
 
-//       // Registration successful
-//       setIsSubmitted(true);
-//     } else {
-//       console.error('Registration failed:', response.data.message);
-//     }
-//   } catch (error) {
-//     console.error('Registration failed', error);
-//   }
-// };
+  //       // Registration successful
+  //       setIsSubmitted(true);
+  //     } else {
+  //       console.error('Registration failed:', response.data.message);
+  //     }
+  //   } catch (error) {
+  //     console.error('Registration failed', error);
+  //   }
+  // };
 
   return (
     <div>
       <h2>Register</h2>
       {isSubmitted ? (
         <div>
-            <p>Registration successful! You can now log in.</p>
-        <Login/>
+          <p>Registration successful! You can now log in.</p>
+          <Login />
         </div>
-        
       ) : (
         <form onSubmit={handleSubmit}>
           <div>
@@ -93,7 +92,7 @@ function RegistrationForm() {
               type="text"
               id="username"
               name="username"
-              placeholder='username*'
+              placeholder="username*"
               value={formData.username}
               onChange={handleChange}
               required
@@ -106,7 +105,7 @@ function RegistrationForm() {
               type="password"
               id="password"
               name="password"
-              placeholder='password*'
+              placeholder="password*"
               value={formData.password}
               onChange={handleChange}
               required
@@ -120,17 +119,18 @@ function RegistrationForm() {
               type="password"
               id="confirmPassword"
               name="confirmPassword"
-              placeholder='password*'
+              placeholder="password*"
               value={formData.confirmPassword}
               onChange={handleChange}
               required
             />
-            {errors.confirmPassword && <p className="error">{errors.confirmPassword}</p>}
+            {errors.confirmPassword && (
+              <p className="error">{errors.confirmPassword}</p>
+            )}
           </div>
           <button type="submit">Register</button>
         </form>
       )}
-
     </div>
   );
 }

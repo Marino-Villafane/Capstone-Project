@@ -1,5 +1,5 @@
-import React from 'react';
-import { FaFacebook, FaTwitter, FaInstagram } from 'react-icons/fa';
+import React from "react";
+import { FaFacebook, FaTwitter, FaInstagram } from "react-icons/fa";
 
 function SocialMediaFooter() {
   return (
@@ -15,7 +15,10 @@ function SocialMediaFooter() {
           <FaInstagram />
         </a>
       </div>
-      <p>&copy; {new Date().getFullYear()} Yory Ecommerce Store. All rights reserved.</p>
+      <p>
+        &copy; {new Date().getFullYear()} Yory Ecommerce Store. All rights
+        reserved.
+      </p>
     </footer>
   );
 }

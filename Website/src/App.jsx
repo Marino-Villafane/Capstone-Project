@@ -73,7 +73,7 @@ const removeFromCart = (productId) => {
           <Route path="/cart" element={<ShoppingCart cart={cart} />} />
           <Route path="/auth" element={<AuthContainer/>}/>
       </Routes>
-      <footer>
+      <footer id='footer'>
         <ContactUsFooter/>
       <SocialMediaFooter/>
       
