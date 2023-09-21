@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
+import {Routes, Route, Link } from "react-router-dom";
 import HomePage from './components/HomePage.jsx';
 import ProductDetails from "./components/ProductDetails.jsx";
 import ProductList from "./components/ProductList.jsx";
@@ -41,7 +41,6 @@ const removeFromCart = (productId) => {
   const cartCount = cart.reduce((total, item) => total + item.quantity, 0);
 
   return (
-    <Router>
     <div>
       <div><Navbar cartCount={cartCount}/></div>
       
@@ -79,7 +78,6 @@ const removeFromCart = (productId) => {
       
       </footer>
     </div>
-    </Router>
   );
 }
 
