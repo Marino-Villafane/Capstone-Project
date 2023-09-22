@@ -76,22 +76,22 @@ function ProductDetails({ product, cart, setCart }) {
       <p>Category: {productDetails.category}</p>
       <p>Pictures:</p>
       <Slider
-          dots={true}
-          infinite={true}
-          speed={500}
-          slidesToShow={3} // Adjust the number of products to show per slide
-          slidesToScroll={1}
-          autoplay={true}
-        >
-      <p>
-        <img src={productDetails.images[0]} alt={productDetails.title} />
-      </p>
-      <p>
-        <img src={productDetails.images[1]} alt={productDetails.title} />
-      </p>
-      <p>
-        <img src={productDetails.images[2]} alt={productDetails.title} />
-      </p>
+        dots={true}
+        infinite={true}
+        speed={500}
+        slidesToShow={3} // Adjust the number of products to show per slide
+        slidesToScroll={1}
+        autoplay={true}
+      >
+        <p>
+          <img src={productDetails.images[0]} alt={productDetails.title} />
+        </p>
+        <p>
+          <img src={productDetails.images[1]} alt={productDetails.title} />
+        </p>
+        <p>
+          <img src={productDetails.images[2]} alt={productDetails.title} />
+        </p>
       </Slider>
     </div>
   );
