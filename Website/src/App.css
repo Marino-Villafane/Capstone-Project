@@ -40,3 +40,23 @@
 .read-the-docs {
   color: #888;
 }
+
+.cart {
+  position: relative;
+  cursor: pointer;
+}
+
+.cart i {
+  font-size: 24px;
+}
+
+.cart-count {
+  position: absolute;
+  top: -8px;
+  right: -8px;
+  background-color: #007BFF;
+  color: white;
+  border-radius: 50%;
+  padding: 4px 8px;
+  font-size: 12px;
+}

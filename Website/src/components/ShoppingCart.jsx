@@ -1,12 +1,24 @@
 import React from "react";
-import CheckoutForm from "./CheckoutForm";
 
-function ShoppingCart({ cart }) {
-  // Define a function to handle form submission
-  const handleCheckout = (formData) => {
-    // Process the form data, including the total cost
-    console.log("Form data:", formData);
-    // You can add your own logic here to handle the checkout process
+function ShoppingCart({ cart, removeFromCart, updateQuantity }) {
+  // Function to handle increasing quantity
+  const increaseQuantity = (productId) => {
+    const updatedCart = cart.map((item) =>
+      item.id === productId
+        ? { ...item, quantity: item.quantity + 1 }
+        : item
+    );
+    updateQuantity(updatedCart);
+  };
+
+  // Function to handle decreasing quantity
+  const decreaseQuantity = (productId) => {
+    const updatedCart = cart.map((item) =>
+      item.id === productId && item.quantity > 1
+        ? { ...item, quantity: item.quantity - 1 }
+        : item
+    );
+    updateQuantity(updatedCart);
   };
 
   // Calculate total cost based on cart items
@@ -26,13 +38,16 @@ function ShoppingCart({ cart }) {
             </p>
             <p>{product.title}</p>
             <p>Quantity: {product.quantity}</p>
+            <button onClick={() => increaseQuantity(product.id)}>+</button>
+            <button onClick={() => decreaseQuantity(product.id)}>-</button>
             <p>Price: ${product.price}</p>
+            <button onClick={() => removeFromCart(product.id)}>Remove</button>
           </div>
         ))}
       </ul>
       <h3>Checkout</h3>
       <p>Total Cost: ${totalCost.toFixed(2)}</p>
-      <CheckoutForm onSubmit={handleCheckout} cart={cart} />
+      {/* Add your checkout form here */}
     </div>
   );
 }

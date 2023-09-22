@@ -190,7 +190,7 @@ function LoginForm({ onLogin, authenticator, setAuthenticator }) {
 
     // Reset errors
     setErrors({});
-
+    //setIsSubmitted(true);
     //TO WAIT FOR BACKEND API
     // try {
     //   // Send login data to the backend
@@ -311,3 +311,5 @@ function AuthContainer() {
 }
 
 export default AuthContainer;
+
+

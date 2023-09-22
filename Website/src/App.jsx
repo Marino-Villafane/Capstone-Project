@@ -18,7 +18,7 @@ function App() {
 
   const [cart, setCart] = useState([]);
 // Function to add a product to the cart
-const addToCart = (product) => {
+ const addToCart = (product) => {
   const existingCartItem = cart.find((item) => item.id === product.id);
 
   if (existingCartItem) {
@@ -70,7 +70,9 @@ const removeFromCart = (productId) => {
           path='/productlist'
           render={(props) => <ProductList {...addToCart} isAuthed={true} />}
         /> */}
-          <Route path="/cart" element={<ShoppingCart cart={cart} />} />
+          <Route path="/cart" element={
+            <ShoppingCart cart={cart} removeFromCart={removeFromCart} updateQuantity={setCart}  />}/>
+
           <Route path="/auth" element={<AuthContainer/>}/>
       </Routes>
       <footer id='footer'>
