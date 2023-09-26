@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 function ShoppingCart({ cart, removeFromCart, updateQuantity }) {
   // Function to handle increasing quantity
@@ -45,7 +46,9 @@ function ShoppingCart({ cart, removeFromCart, updateQuantity }) {
           </div>
         ))}
       </ul>
-      <h3>Checkout</h3>
+      <button>
+      <Link to={"/checkout"}>Checkout</Link>
+      </button>
       <p>Total Cost: ${totalCost.toFixed(2)}</p>
       {/* Add your checkout form here */}
     </div>

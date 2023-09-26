@@ -12,7 +12,7 @@ import ShoppingCart from './components/ShoppingCart.jsx';
 import AuthContainer from './components/AuthForm.jsx';
 import ContactUsFooter from './components/ContactUs.jsx';
 import SocialMediaFooter from './components/Footer.jsx';
-
+import StripeContainer from './components/StripeContainer.jsx';
 
 function App() {
 
@@ -41,6 +41,7 @@ const removeFromCart = (productId) => {
   const cartCount = cart.reduce((total, item) => total + item.quantity, 0);
 
   return (
+    <>
     <Router>
     <div>
       <div><Navbar cartCount={cartCount}/></div>
@@ -73,6 +74,10 @@ const removeFromCart = (productId) => {
           <Route path="/cart" element={
             <ShoppingCart cart={cart} removeFromCart={removeFromCart} updateQuantity={setCart}  />}/>
 
+          <Route path="/checkout" element={
+            <StripeContainer cart={cart} />} />
+            
+            
           <Route path="/auth" element={<AuthContainer/>}/>
       </Routes>
       <footer id='footer'>
@@ -82,6 +87,7 @@ const removeFromCart = (productId) => {
       </footer>
     </div>
     </Router>
+    </>
   );
 }
 
