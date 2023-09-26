@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import ShoppingCart from "./ShoppingCart";
 import ProductDetails from "./ProductDetails";
+import '../styles/layouts.css'
 
 function ProductList({ cart, cartCount, setCart }) {
   const [products, setProducts] = useState([]);
@@ -171,8 +172,8 @@ function ProductList({ cart, cartCount, setCart }) {
           ? filteredProducts.map((product) => (
               <div key={product.id}>
                 <p>{product.title}</p>
-                <p id="images">
-                  <img src={product.thumbnail} alt={product.title} />
+                <p >
+                  <img id="images" src={product.thumbnail} alt={product.title} />
                 </p>
                 <p>
                   {"$"}
@@ -184,7 +185,7 @@ function ProductList({ cart, cartCount, setCart }) {
               </div>
             ))
           : products.map((product) => (
-              <div key={product.id}>
+              <div  id = "proddisplay" key={product.id}>
                 <p>{product.title}</p>
                 <p id="images">
                   <img src={product.thumbnail} alt={product.title} />

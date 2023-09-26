@@ -61,7 +61,7 @@ function HomePage() {
         >
           {products.map((product) => (
             <div key={product.id} className="product">
-              <img src={product.images[0]} alt={product.name} />
+              <img id='images' src={product.images[0]} alt={product.name} />
               <h3>{product.title}</h3>
               <p>Price: ${product.price}</p>
               <button>Shop Now</button>
