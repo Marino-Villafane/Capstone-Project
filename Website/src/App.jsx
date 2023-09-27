@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
 import HomePage from './components/HomePage.jsx';
 import ProductDetails from "./components/ProductDetails.jsx";
@@ -14,9 +14,17 @@ import ContactUsFooter from './components/ContactUs.jsx';
 import SocialMediaFooter from './components/Footer.jsx';
 import StripeContainer from './components/StripeContainer.jsx';
 
+const cartFromLocalStorage = JSON.parse(localStorage.getItem('cart') || [] )
+
 function App() {
 
-  const [cart, setCart] = useState([]);
+  const [cart, setCart] = useState(cartFromLocalStorage);
+
+  useEffect(() => {
+    localStorage.setItem("cart", JSON.stringify(cart));
+  }, [cart]);
+
+
 // Function to add a product to the cart
  const addToCart = (product) => {
   const existingCartItem = cart.find((item) => item.id === product.id);

@@ -194,11 +194,11 @@ function LoginForm({ onLogin, authenticator, setAuthenticator }) {
     //TO WAIT FOR BACKEND API
     // try {
     //   // Send login data to the backend
-    //   const response = await axios.post('your-backend-api-url/login', formData, {
+    //   const response = await axios.post('https://dummyjson.com/auth/login', formData, {
     //     headers: makeHeaders(),
     //   });
 
-    //   // Check for a successful login and token in the response
+      // Check for a successful login and token in the response
     //   if (response.data.success && response.data.token) {
     //     // Log the user in and store the token
     //     logIn(response.data.token);
