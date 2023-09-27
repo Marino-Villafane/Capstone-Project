@@ -35,7 +35,7 @@ export default function Login() {
 
     try {
       // Send login data to the backend
-      const response = await fetch("your-backend-api-url/login", {
+      const response = await fetch("https://dummyjson.com/auth/login", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
