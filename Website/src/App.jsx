@@ -9,7 +9,7 @@ import Register from "./components/Register.jsx";
 import "./styles/layouts.css"
 import Navbar from "./components/Header.jsx";
 import ShoppingCart from './components/ShoppingCart.jsx';
-import AuthContainer from './components/AuthForm.jsx';
+import AuthForm from './components/AuthForm.jsx';
 import ContactUsFooter from './components/ContactUs.jsx';
 import SocialMediaFooter from './components/Footer.jsx';
 import StripeContainer from './components/StripeContainer.jsx';
@@ -73,8 +73,9 @@ const removeFromCart = (productId) => {
           setCart={setCart}
           cartCount={cartCount}
           removeFromCart={removeFromCart}/>}/>
-        <Route path="/register" element={<Register/>}/>
-        <Route path="/login" element={<Login/>}/>
+        <Route path="/register" element={<AuthForm isRegistering={true} />} />
+            <Route path="/login" element={<AuthForm isRegistering={false} />} />
+            
         <Route
             path="/productlist"
              element= {<ProductList
@@ -96,7 +97,7 @@ const removeFromCart = (productId) => {
             <StripeContainer cart={cart} />} />
             
             
-          <Route path="/auth" element={<AuthContainer/>}/>
+          
       </Routes>
       <footer id='footer'>
         <ContactUsFooter/>
