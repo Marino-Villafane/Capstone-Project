@@ -1,12 +1,12 @@
 //getting evreything we need from PG libaray
-const POOL = require("pg").Pool;
-const pool = new POOL ({
-	user: "MarinoV",
-	host: "capstone-database.c26t3cwjdeyu.us-east-2.rds.amazonaws.com",
-	database: "capstone-database",
-	password: "Capstone123",
-	port: 5432
-});
+const { Pool } = require("pg");
 
+const pool = new Pool({
+  user: 'postgres',                    // Your database username
+  host: 'localhost', // Your RDS endpoint
+  database: 'postgres',      // Your RDS database name (DB ID)
+  password: 'Messimagical10!',           // Your database password
+  port: 5432,                         // PostgreSQL port (usually 5432)
+});
 
 module.exports = pool;
