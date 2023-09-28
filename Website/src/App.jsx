@@ -14,7 +14,17 @@ import ContactUsFooter from './components/ContactUs.jsx';
 import SocialMediaFooter from './components/Footer.jsx';
 import StripeContainer from './components/StripeContainer.jsx';
 
-const cartFromLocalStorage = JSON.parse(localStorage.getItem('cart') || [] )
+let cartFromLocalStorage = [];
+try {
+  const cartData = localStorage.getItem('cart');
+  if (cartData) {
+    cartFromLocalStorage = JSON.parse(cartData);
+  }
+} catch (error) {
+  console.error('Error parsing JSON data from localStorage', error);
+}
+
+// const cartFromLocalStorage = JSON.parse(localStorage.getItem('cart') || [] )
 
 function App() {
 
