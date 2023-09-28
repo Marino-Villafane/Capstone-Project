@@ -24,11 +24,15 @@ const CARD_OPTIONS = {
 	}
 }
 
-
-export default function PaymentForm() {
+export default function PaymentForm( cart ) {
     const [ success, setSuccess ] = useState(false)
     const stripe = useStripe()
     const elements = useElements()
+    // const [ userData, setUserData ] = useState({
+    //     name: '',
+    //     email: '',
+    //     address: ''
+    // })
 
     const handleSubmit = async (e) => {
         e.preventDefault()
