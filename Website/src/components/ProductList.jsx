@@ -170,12 +170,12 @@ function ProductList({ cart, cartCount, setCart }) {
       <ul id="productlist">
         {filteredProducts
           ? filteredProducts.map((product) => (
-              <div key={product.id}>
-                <p>{product.title}</p>
+              <div id = "product-item" key={product.id}>
+                <p id = "title">{product.title}</p>
                 <p >
                   <img id="images" src={product.thumbnail} alt={product.title} />
                 </p>
-                <p>
+                <p id = "price">
                   {"$"}
                   {product.price}
                 </p>
@@ -184,16 +184,17 @@ function ProductList({ cart, cartCount, setCart }) {
                 </p>
               </div>
             ))
+
           : products.map((product) => (
-              <div  id = "proddisplay" key={product.id}>
-                <p>{product.title}</p>
-                <p id="images">
-                  <img src={product.thumbnail} alt={product.title} />
-                </p>
-                <p>
-                  {"$"}
-                  {product.price}
-                </p>
+            <div  id = "product-item" key={product.id}>
+              <p id = "title">{product.title}</p>
+              {/* <p > */}
+                <img id="images" src={product.thumbnail} alt={product.title} />
+              {/* </p> */}
+              <p id = "price">
+                {"$"}
+                {product.price}
+              </p>
                 <p>
                   <Link to={`/productlist/${product.id}`}>See More...</Link>
                 </p>

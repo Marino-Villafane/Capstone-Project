@@ -4,8 +4,8 @@ import HomePage from './components/HomePage.jsx';
 import ProductDetails from "./components/ProductDetails.jsx";
 import ProductList from "./components/ProductList.jsx";
 import Header from "./components/Header.jsx"
-import Login from "./components/Login.jsx";
-import Register from "./components/Register.jsx";
+// import Login from "./components/Login.jsx";
+// import Register from "./components/Register.jsx";
 import "./styles/layouts.css"
 import Navbar from "./components/Header.jsx";
 import ShoppingCart from './components/ShoppingCart.jsx';
@@ -13,20 +13,37 @@ import AuthForm from './components/AuthForm.jsx';
 import ContactUsFooter from './components/ContactUs.jsx';
 import SocialMediaFooter from './components/Footer.jsx';
 import StripeContainer from './components/StripeContainer.jsx';
+// import background1 from './components/background1.png';
 
+// <<<<<<< HEAD
+// =======
+// // const cartFromLocalStorage = JSON.parse(localStorage.getItem('cart') || [] )
+
+// >>>>>>> 8bcddc4 (just some layout edits)
 let cartFromLocalStorage = [];
 try {
   const cartData = localStorage.getItem('cart');
   if (cartData) {
     cartFromLocalStorage = JSON.parse(cartData);
   }
+// <<<<<<< HEAD
 } catch (error) {
   console.error('Error parsing JSON data from localStorage', error);
 }
 
 // const cartFromLocalStorage = JSON.parse(localStorage.getItem('cart') || [] )
+// =======
+// }catch (erro) {console.error('Error parsing data', error);
+// }
+// >>>>>>> 8bcddc4 (just some layout edits)
 
 function App() {
+
+  // const appStyle = {
+  //   backgroundImage: `url(${background1})`, // Apply background image
+  //   backgroundSize: 'cover', // Adjust background size as needed
+  //   backgroundRepeat: 'no-repeat', // Prevent background image from repeating
+  // };
 
   const [cart, setCart] = useState(cartFromLocalStorage);
 
@@ -61,7 +78,7 @@ const removeFromCart = (productId) => {
   return (
     <>
     <Router>
-    <div>
+    <div >
       <div><Navbar cartCount={cartCount}/></div>
       
       <Routes> 
