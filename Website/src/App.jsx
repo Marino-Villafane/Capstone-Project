@@ -4,8 +4,8 @@ import HomePage from './components/HomePage.jsx';
 import ProductDetails from "./components/ProductDetails.jsx";
 import ProductList from "./components/ProductList.jsx";
 import Header from "./components/Header.jsx"
-import Login from "./components/Login.jsx";
-import Register from "./components/Register.jsx";
+//import Login from "./components/Login.jsx";
+//import Register from "./components/Register.jsx";
 import "./styles/layouts.css"
 import Navbar from "./components/Header.jsx";
 import ShoppingCart from './components/ShoppingCart.jsx';
