@@ -22,27 +22,30 @@ function ContactUsFooter() {
 
   return (
     <footer className="contact-us">
-      <h2>Contact Us</h2>
-      <p>
+      <h5>Contact Us</h5>
+      <p style={{fontSize:0.75 + 'em'}}>
         If you have any questions or need assistance, feel free to contact us:
       </p>
-      <form onSubmit={handleSubmit}>
+      <form style={{fontSize:0.75 + 'em'}} onSubmit={handleSubmit}>
         <input
           type="text"
           name="name"
           placeholder="Your Name"
           onChange={handleInputChange}
+          style={{fontSize:0.75 + 'em'}}
         />
         <input
           type="email"
           name="email"
           placeholder="Your Email"
           onChange={handleInputChange}
+          style={{fontSize:0.75 + 'em'}}
         />
         <textarea
           name="message"
           placeholder="Your Message"
           onChange={handleInputChange}
+          style={{fontSize:0.75 + 'em'}}
         ></textarea>
         <button type="submit">Submit</button>
       </form>

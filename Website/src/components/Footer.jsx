@@ -15,7 +15,7 @@ function SocialMediaFooter() {
           <FaInstagram />
         </a>
       </div>
-      <p>
+      <p style={{fontSize:0.75 + 'em'}}>
         &copy; {new Date().getFullYear()} Yory Ecommerce Store. All rights
         reserved.
       </p>
