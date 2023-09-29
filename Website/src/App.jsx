@@ -5,7 +5,16 @@ import AuthForm from './components/AuthForm.jsx';
 import ContactUsFooter from './components/ContactUs.jsx';
 import SocialMediaFooter from './components/Footer.jsx';
 import StripeContainer from './components/StripeContainer.jsx';
-// import background1 from './components/background1.png';
+import { useState, useEffect } from "react";
+import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
+import HomePage from './components/HomePage.jsx';
+import ProductDetails from "./components/ProductDetails.jsx";
+import ProductList from "./components/ProductList.jsx";
+import Header from "./components/Header.jsx"
+// import Login from "./components/Login.jsx";
+// import Register from "./components/Register.jsx";
+import "./styles/layouts.css"
+
 
 // <<<<<<< HEAD
 // =======
