@@ -170,8 +170,7 @@ const login = async (req, res) => {
 };
 
 module.exports = {
-  getAdmin,
-  getSingleAdmin,
-  newAdmin,
-  login,
+    getAdmin,
+    newAdmin,
+    login
 };

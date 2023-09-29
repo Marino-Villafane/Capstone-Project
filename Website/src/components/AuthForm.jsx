@@ -425,12 +425,14 @@ const AuthForm = ({ isRegistering }) => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
+
+  const baseURL = 'http://localhost:3000/api';
   const handleSubmit = async (e) => {
     e.preventDefault();
   
     try {
       const response = await axios.post(
-        isRegistering ? 'https://dummyjson.com/users/add' : 'https://dummyjson.com/auth/login',
+        isRegistering ? `${baseURL}/users/register` : `${baseURL}/users/login`,
         { email, password }
       );
   
